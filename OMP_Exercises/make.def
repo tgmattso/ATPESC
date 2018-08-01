@@ -1,0 +1,14 @@
+# Makefile definitions for an icc or gcc
+# compiler on Apple OS-X 
+CC          = gcc
+#CC          = icc
+CLINKER     = $(CC)
+OPTFLAGS    = -fopenmp -O3 -DAPPLE
+LIBS        = -lm
+PRE         = ./
+
+CFLAGS	  = $(OPTFLAGS)
+
+OBJ=o
+EXE=
+RM=rm
