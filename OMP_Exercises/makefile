@@ -6,7 +6,7 @@
 
 include make.def
 
-EXES=hello$(EXE) pi$(EXE) pi_recur$(EXE) mandel$(EXE)  \
+EXES=hello$(EXE) pi$(EXE) mandel$(EXE)  \
          mm_testbed$(EXE) jac_solv$(EXE) pi_mc$(EXE)   \
          linked$(EXE) hist$(EXE) 
 
@@ -35,9 +35,6 @@ hello$(EXE): hello.$(OBJ)
 pi$(EXE): pi.$(OBJ) 
 	$(CLINKER) $(OPTFLAGS) -o pi pi.$(OBJ) $(LIBS)
 
-pi_recur$(EXE): pi_recur.$(OBJ) 
-	$(CLINKER) $(OPTFLAGS) -o pi_recur pi_recur.$(OBJ) $(LIBS)
-
 mandel$(EXE):  mandel.$(OBJ) 
 	$(CLINKER) $(OPTFLAGS) -o mandel mandel.$(OBJ) $(LIBS)
 
@@ -50,7 +47,6 @@ hist$(EXE): $(HIST_OBJS) random.h
 test: $(EXES)
 	$(PRE)hello$(EXE) 
 	$(PRE)pi$(EXE) 
-	$(PRE)pi_recur$(EXE) 
 	$(PRE)pi_mc$(EXE) 
 	$(PRE)mandel$(EXE) 
 	$(PRE)mm_testbed$(EXE) 

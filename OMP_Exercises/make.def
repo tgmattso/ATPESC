@@ -1,6 +1,6 @@
 # Makefile definitions for an icc or gcc
 # compiler on Apple OS-X 
-CC          = gcc
+CC          = gcc-9
 #CC          = icc
 CLINKER     = $(CC)
 OPTFLAGS    = -fopenmp -O3 -DAPPLE
