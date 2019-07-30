@@ -1,14 +1,26 @@
-# Makefile definitions for an icc or gcc
-# compiler on Apple OS-X 
+# Makefile definitions.  Comment out the one
+# you wish to use:
+
+# gcc-9 for Linux or Apple (note on Apple .. the gcc you get by default 
+# connects to their clang compiler which does not include OpenMP
 CC          = gcc-9
+
+# Intel Compiler
 #CC          = icc
+
+# gcc for Linux systems
+#CC          = gcc
+
+# These definitions should work on any system
 CLINKER     = $(CC)
-OPTFLAGS    = -fopenmp -O3 -DAPPLE
+OPTFLAGS    = -std=c11 -fopenmp -O3 -DAPPLE
 LIBS        = -lm
 PRE         = ./
 
 CFLAGS	  = $(OPTFLAGS)
 
+# Definitions for Linx and OSX.   We'd need to change these
+# to support Windows with nmake
 OBJ=o
 EXE=
 RM=rm
