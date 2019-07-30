@@ -301,3 +301,44 @@ int pointFunc(float *val)  // I pass in the address of val
 
    return sum;
 }
+
+// There are a few things I forgot to cover that you need for some
+// of the exercises.  We have structures in C. they look like this
+// (where I am making everything a comment for now ... I will convert
+// to real code later)
+//
+//      struct d_complex{
+//        double real;
+//        double imag;
+//      };     
+//
+// In this case, my structure defines complex variables with a real part
+// and an imaginary part.  I can now declare variables of that type
+//
+//      struct d_complex c;
+//      c.real = 5.0;
+//      c.imag = 6.0;
+// 
+// Notice the way I reference the individual parts of a structure.  
+//    
+// Structures often include pointers.  For example, when defining a 
+// linked list, my structure needs a pointer to the next item in the list
+//
+//      struct node {
+//         int data;
+//         int fibdata;
+//         struct node* next;
+//      };
+//
+// C loves pointers.  Remember, any time I want to make changes to a
+// variable from inside a function visible to the caller of that function,
+// I need to use a pointer.  When I have a pointer to a variable that is
+// a structure and I want to access fields of that structure, I use an
+// arrow notation
+//
+//      void do_something(struct node *p) 
+//      {
+//          int n;
+//          n = p->data);
+//          p->fibdata = fib(n);
+//      } 
