@@ -43,7 +43,6 @@ int main ()
    double bucket_width;      // the width of each bucket in the histogram
    double time;
 
-   time = omp_get_wtime();
 
    seed(xlow, xhi);  // seed the random number generator over range of x
    bucket_width = (xhi-xlow)/(double)num_buckets;
@@ -57,6 +56,7 @@ int main ()
      hist[i] = 0;
 
   // Assign x values to the right historgram bucket
+   time = omp_get_wtime();
    for(int i=0;i<num_trials;i++){
      
       long ival = (long) (x[i] - xlow)/bucket_width;
@@ -69,6 +69,8 @@ int main ()
 
    }
 
+  time = omp_get_wtime() - time;
+
   double sumh=0.0, sumhsq=0.0, ave, std_dev;
   // compute statistics ... ave, std-dev for whole histogram and quartiles
    for(int i=0;i<num_buckets;i++){
@@ -79,7 +81,6 @@ int main ()
    ave     = sumh/num_buckets;
    std_dev = sqrt(sumhsq - sumh*sumh/(double)num_buckets); 
 
-   time = omp_get_wtime() - time;
 
    printf(" histogram for %d buckets of %d values\n",num_buckets, num_trials);
    printf(" ave = %f, std_dev = %f\n",(float)ave, (float)std_dev);
