@@ -31,7 +31,7 @@ History:
 //#define     DEBUG         0
 
 #define     num_trials    1000000 // number of x values
-#define     num_buckets   100        // number of buckets in hitogram
+#define     num_buckets   50         // number of buckets in hitogram
 static long xlow        = 0.0;      // low end of x range
 static long xhi         = 100.0;    // High end of x range
 

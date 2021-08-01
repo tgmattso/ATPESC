@@ -7,7 +7,7 @@
 //
 // A simple linear congruential random number generator
 // (Numerical Recipies chapter 7, 1st ed.) with parameters
-// from the table on page 198j.
+// from the table on page 198.
 //
 //  Uses a linear congruential generator to return a value between
 //  0 and 1, then scales and shifts it to fill the desired range.  This
@@ -31,6 +31,9 @@
 static long MULTIPLIER  = 1366;
 static long ADDEND      = 150889;
 static long PMOD        = 714025;
+//static long MULTIPLIER  = 2416;
+//static long ADDEND      = 37441;
+//static long PMOD        = 1771875;
 long random_last = 0;
 double random_low, random_hi;
 
