@@ -20,6 +20,7 @@ Algorithm:
      
 History: 
    Written by Tim Mattson, 7/2017.
+   updated with multiple methods 8/2021
 
 */
 #include <stdio.h>
@@ -79,7 +80,7 @@ int main ()
    #pragma omp parallel 
    {
       #pragma omp single
-          printf(" %d threads/n",omp_get_num_threads());
+          printf(" %d threads\n",omp_get_num_threads());
       #pragma omp for
       for(i= 0; i< num_buckets; i++)
           omp_init_lock(&hist_lcks[i]);
