@@ -3,7 +3,7 @@
 Materials for the OpenMP lecture at the ATPESC 
 
 Treat this content as under a creative commons license.  You
-can do whatever you want with it, but please site me 
+can do whatever you want with it, but please cite me 
 (Tim Mattson)
 
 
