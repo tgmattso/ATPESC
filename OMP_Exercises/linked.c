@@ -60,7 +60,7 @@ struct node* init_list(struct node* p) {
     struct node* head = NULL;
     struct node* temp = NULL;
     
-    head = malloc(sizeof(struct node));
+    head = (struct node*) malloc(sizeof(struct node));
     p = head;
     p->data = FS;
     p->fibdata = 0;
