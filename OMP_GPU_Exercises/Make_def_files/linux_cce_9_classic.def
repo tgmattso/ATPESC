@@ -1,0 +1,13 @@
+# for the Cray compiler (cce)
+# copy to make.def
+CC          = cc
+CLINKER     = $(CC)
+OPTFLAGS    = -O3 -homp
+LIBS        =
+PRE         = ./
+
+CFLAGS    = $(OPTFLAGS)
+
+OBJ=o
+EXE=
+RM=rm -f

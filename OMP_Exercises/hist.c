@@ -31,9 +31,9 @@ History:
 //#define     DEBUG         0
 
 #define     num_trials    1000000 // number of x values
-#define     num_buckets   50         // number of buckets in hitogram
-static long xlow        = 0.0;      // low end of x range
-static long xhi         = 100.0;    // High end of x range
+#define     num_buckets   50      // number of buckets in hitogram
+static long xlow        = 0.0;     // low end of x range
+static long xhi         = 100.0;   // High end of x range
 
 int main ()
 {
@@ -71,16 +71,15 @@ int main ()
 
   time = omp_get_wtime() - time;
 
-  double sumh=0.0, sumhsq=0.0, ave, std_dev;
+  double sumh=0.0, sumhsq=0.0;
   // compute statistics ... ave, std-dev for whole histogram and quartiles
    for(int i=0;i<num_buckets;i++){
      sumh   += (double) hist[i];
      sumhsq += (double) hist[i]*hist[i];
    }
-
-   ave     = sumh/num_buckets;
-   std_dev = sqrt(sumhsq - sumh*sumh/(double)num_buckets); 
-
+   double N = (double)num_buckets;
+   double ave     = sumh/N;
+   double std_dev = sqrt(sumhsq/N - sumh*sumh/(N*N)); 
 
    printf(" histogram for %d buckets of %d values\n",num_buckets, num_trials);
    printf(" ave = %f, std_dev = %f\n",(float)ave, (float)std_dev);
