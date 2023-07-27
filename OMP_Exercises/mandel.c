@@ -20,30 +20,25 @@
 # define NPOINTS 1000
 # define MAXITER 1000
 
-void testpoint(void);
+void testpoint(double, double);
 
-struct d_complex{
-   double r;
-   double i;
-};
-
-struct d_complex c;
 int numoutside = 0;
 
 int main(){
    int i, j;
    double area, error, eps  = 1.0e-5;
+   double cimag, creal;
 
 
 //   Loop over grid of points in the complex plane which contains the Mandelbrot set,
 //   testing each point to see whether it is inside or outside the set.
 
-#pragma omp parallel for default(shared) private(c,eps)
+#pragma omp parallel for private(eps)
    for (i=0; i<NPOINTS; i++) {
      for (j=0; j<NPOINTS; j++) {
-       c.r = -2.0+2.5*(double)(i)/(double)(NPOINTS)+eps;
-       c.i = 1.125*(double)(j)/(double)(NPOINTS)+eps;
-       testpoint();
+       creal = -2.0+2.5*(double)(i)/(double)(NPOINTS)+eps;
+       cimag = 1.125*(double)(j)/(double)(NPOINTS)+eps;
+       testpoint(creal, cimag);
      }
    }
 
@@ -57,25 +52,23 @@ area=2.0*2.5*1.125*(double)(NPOINTS*NPOINTS-numoutside)/(double)(NPOINTS*NPOINTS
 
 }
 
-void testpoint(void){
+void testpoint(double creal, double cimag){
 
-// Does the iteration z=z*z+c, until |z| > 2 when point is known to be outside set
+// iterate z=z*z+c, until |z| > 2 when point is known to be outside set
 // If loop count reaches MAXITER, point is considered to be inside the set
 
-       struct d_complex z;
+       double zreal, zimag, temp;
        int iter;
-       double temp;
+       zreal = creal;  zimag = cimag;
 
-       z=c;
        for (iter=0; iter<MAXITER; iter++){
-         temp = (z.r*z.r)-(z.i*z.i)+c.r;
-         z.i = z.r*z.i*2+c.i;
-         z.r = temp;
-         if ((z.r*z.r+z.i*z.i)>4.0) {
+         temp = (zreal*zreal)-(zimag*zimag)+creal;
+         zimag = zreal*zimag*2+cimag;
+         zreal = temp;
+         if ((zreal*zreal+zimag*zimag)>4.0) {
            numoutside++;
            break;
          }
        }
-
 }
 
