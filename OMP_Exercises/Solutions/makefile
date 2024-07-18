@@ -8,8 +8,10 @@ include ../make.def
 EXES=hello_par$(EXE) pi_spmd_simple$(EXE) pi_spmd_final$(EXE) \
      pi_loop$(EXE) mandel_par$(EXE) pi_task$(EXE)  \
      mm_testbed$(EXE) jac_solv_parfor jac_solv_par_for$(EXE) \
-     racey_tasks$(EXE) pi_vec$(EXE) jac_solv_simd$(EXE) hist_par$(EXE)\
+     racey_tasks$(EXE) jac_solv_simd$(EXE) hist_par$(EXE)\
      linked_notasks$(EXE) linked_tasks$(EXE)
+
+# pi_vec(EXE) removed since it only works with x86 processors
 
 MM_OBJS  = mm_testbed.$(OBJ) mm_utils.$(OBJ) mm_tst_cases.$(OBJ) \
            mm_ijk.$(OBJ) mm_ikj.$(OBJ) mm_ikj_par.$(OBJ) mm_trans.$(OBJ)
@@ -80,11 +82,13 @@ test: $(EXES)
 	$(PRE)jac_solv_parfor 
 	$(PRE)jac_solv_par_for$(EXE) 
 	$(PRE)racey_tasks$(EXE) 
-	$(PRE)pi_vec$(EXE)  
 	$(PRE)jac_solv_simd$(EXE) 
 	$(PRE)hist_par$(EXE)  
 	$(PRE)linked_notasks$(EXE) 
 	$(PRE)linked_tasks$(EXE) 
+
+
+# removed since it only works on x86:	$(PRE)pi_vec$(EXE)  
 
 clean:
 	$(RM) $(EXES) *.$(OBJ)

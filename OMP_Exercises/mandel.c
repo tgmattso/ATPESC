@@ -7,9 +7,9 @@
 **
 **  USAGE:   Program runs without input ... just run the executable
 **            
-**  HISTORY: Written:  (Mark Bull, August 2011).
-**           Changed "comples" to "d_comples" to avoid collsion with 
-**           math.h complex type (Tim Mattson, September 2011)
+**  HISTORY: 
+**.          Written:  (Mark Bull, August 2011).
+**           Simplified so you can do the exercise with less C experience (Tim Mattson, Nov 2023).
 */
 
 #include <stdio.h>
