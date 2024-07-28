@@ -1,6 +1,6 @@
 # for the Nvidia compiler (PGI)
 # copy to make.def
-CC          = nvc
+CC          = cc
 #CC          = icx 
 CLINKER     = $(CC) -lm
 OPTFLAGS   = -O3 -mp=gpu 
