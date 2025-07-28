@@ -95,7 +95,7 @@ int main ()
      x[i] = drandom();
 
   ////////////////////////////////////////////////////////////////
-  // Assign x values to the right historgram bucket -- sequential
+  // Assign x values to the right histogram bucket -- sequential
   ////////////////////////////////////////////////////////////////
   printf(" Sequential ");
   initHist(hist);
@@ -116,7 +116,7 @@ int main ()
   analyzeResults(time,hist);
 
   ////////////////////////////////////////////////////////////////
-  // Assign x values to the right historgram bucket -- critical
+  // Assign x values to the right histogram bucket -- critical
   ////////////////////////////////////////////////////////////////
   printf(" par with critical ");
   initHist(hist);
@@ -139,7 +139,7 @@ int main ()
   analyzeResults(time,hist);
 
   ////////////////////////////////////////////////////////////////
-  // Assign x values to the right historgram bucket -- par with locks
+  // Assign x values to the right histogram bucket -- par with locks
   ////////////////////////////////////////////////////////////////
   printf(" par with locks ");
   initHist(hist);
