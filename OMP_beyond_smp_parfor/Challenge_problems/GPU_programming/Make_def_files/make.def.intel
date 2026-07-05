@@ -1,0 +1,14 @@
+# for the Cray compiler (cce)
+# copy to make.def
+CC          = icx 
+CLINKER     = $(CC)
+OPTFLAGS    = -O3 -qnextgen -fiopenmp -fopenmp-targets=spir64
+#OPTFLAGS    = -O3 -fopenmp -fopenmp-targets=nvptx64 --cuda-path=/cm/shared/apps/cuda10.2/toolkit/10.2.89 -Xopenmp-target -march=sm_70
+LIBS        =
+PRE         = ./
+
+CFLAGS    = $(OPTFLAGS)
+
+OBJ=o
+EXE=
+RM=rm -f

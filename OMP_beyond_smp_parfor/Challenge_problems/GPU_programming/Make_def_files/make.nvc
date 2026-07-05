@@ -1,0 +1,17 @@
+# for the Nvidia compiler 
+# copy to make.def
+#
+#   Typically run as
+#    nvprof   ./a.out
+#
+CC          = nvc
+CLINKER     = $(CC)
+OPTFLAGS    = -O3 -mp=gpu -gpu=cc75 
+LIBS        =
+PRE         = ./
+
+CFLAGS    = $(OPTFLAGS)
+
+OBJ=o
+EXE=
+RM=rm -f

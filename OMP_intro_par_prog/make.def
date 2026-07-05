@@ -1,0 +1,26 @@
+# Makefile definitions.  Comment out the one
+# you wish to use:
+
+# gcc-9 for Linux or Apple (note on Apple .. the gcc you get by default 
+# connects to their clang compiler which does not include OpenMP
+CC          = gcc-14
+
+# Intel Compiler
+#CC          = icc
+
+# gcc for Linux systems
+#CC          = gcc
+
+# These definitions should work on any system
+CLINKER     = $(CC)
+OPTFLAGS    = -std=c11 -fopenmp -O3 -DAPPLE
+LIBS        = -lm
+PRE         = ./
+
+CFLAGS	  = $(OPTFLAGS)
+
+# Definitions for Linx and OSX.   We'd need to change these
+# to support Windows with nmake
+OBJ=o
+EXE=
+RM=rm
