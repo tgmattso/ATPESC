@@ -44,6 +44,10 @@ hist: $(HIST_OBJS) random.h
 jac_solv: $(JAC_SOLV_OBJS) mm_utils.h
 	$(CLINKER) $(CFLAGS) -o jac_solv $(JAC_SOLV_OBJS) $(LIBS)
 
+transpose: transpose.o 
+	$(CLINKER) $(OPTFLAGS) -o transpose transpose.o $(LIBS)
+
+
 test: $(EXES)
 	./pi
 	./pi_mc
@@ -52,6 +56,7 @@ test: $(EXES)
 	./linked
 	./hist
 	./jac_solv
+	./transpose
 
 clean:
 	rm -f $(EXES) *.o

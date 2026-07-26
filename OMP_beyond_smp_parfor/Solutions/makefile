@@ -15,7 +15,7 @@ EXES=hello_par pi_spmd_simple pi_spmd_final \
      pi_loop mandel_par pi_task  \
      mm_testbed jac_solv_parfor jac_solv_par_for \
      racey_tasks jac_solv_simd hist_par\
-     linked_notasks linked_tasks
+     linked_notasks linked_tasks transpose
 
 # pi_vec(EXE) removed since it only works with x86 processors
 
@@ -77,6 +77,10 @@ linked_notasks: linked_notasks.o
 linked_tasks: linked_tasks.o 
 	$(CLINKER) $(OPTFLAGS) -o linked_tasks linked_tasks.o $(LIBS)
 
+transpose: transpose.o 
+	$(CLINKER) $(OPTFLAGS) -o transpose transpose.o $(LIBS)
+
+
 test: $(EXES)
 	./hello_par 
 	./pi_spmd_simple 
@@ -92,6 +96,7 @@ test: $(EXES)
 	./hist_par 
 	./linked_notasks 
 	./linked_tasks 
+	./transpose
 
 
 # removed since it only works on x86:	$(PRE)pi_vec$(EXE)  

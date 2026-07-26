@@ -10,6 +10,8 @@ void mm_ijk(int Ndim, int Mdim, int Pdim, TYPE *A, TYPE *B, TYPE *C){
   int i, j, k;
   TYPE tmp;
 
+//  #pragma omp parallel for
+  #pragma omp tile sizes(10,10)
   for (i=0; i<Ndim; i++){
      for (j=0; j<Mdim; j++){
         tmp = 0.0;

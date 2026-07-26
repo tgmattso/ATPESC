@@ -9,7 +9,8 @@
 void mm_ikj_par(int Ndim, int Mdim, int Pdim, TYPE *A, TYPE *B, TYPE *C){
   int i, j, k;
 
-  #pragma omp parallel for private(i,j,k) 
+  #pragma omp parallel for private(i,j,k)
+  #pragma omp tile sizes(10,10)
   for (i=0; i<Ndim; i++){
 	for(k=0;k<Pdim;k++){
      for (j=0; j<Mdim; j++){
